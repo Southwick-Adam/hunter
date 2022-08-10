@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/game/map/map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/game/game.gd" type="Script" id=4]
+
+[node name="game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="item_parent" type="Position2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="map" parent="." instance=ExtResource( 1 )]
+position = Vector2( 509, 305 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]

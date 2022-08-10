@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/game/HUD.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game/player/inventory/inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tile.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 90, 90 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="back" type="Sprite" parent="."]
+modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+position = Vector2( 511, 21 )
+scale = Vector2( 32.9375, 2.3125 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="back"]
+position = Vector2( 10.0645, 122.162 )
+scale = Vector2( 0.370968, 8.63514 )
+texture = ExtResource( 4 )
+
+[node name="inventory" parent="." instance=ExtResource( 3 )]
+
+[node name="omen_info" type="Position2D" parent="."]
+
+[node name="Label" type="Label" parent="omen_info"]
+margin_left = 718.0
+margin_top = 92.0
+margin_right = 841.0
+margin_bottom = 106.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="omen_info/Label"]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+position = Vector2( 56, 5 )
+scale = Vector2( 5, 1.2 )
+texture = ExtResource( 4 )
+
+[node name="btn" type="TouchScreenButton" parent="omen_info"]
+position = Vector2( 775, 225 )
+shape = SubResource( 1 )
+shape_centered = false
+
+[node name="square" type="Sprite" parent="omen_info/btn"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="icon" type="Sprite" parent="omen_info/btn"]
+self_modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="health" type="Position2D" parent="."]
+
+[node name="life" type="Sprite" parent="health"]
+modulate = Color( 1, 1, 1, 0.678431 )
+self_modulate = Color( 0.215686, 0.054902, 0.054902, 1 )
+position = Vector2( 31, 30 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="health/life"]
+self_modulate = Color( 0.654902, 0.121569, 0.121569, 1 )
+texture = ExtResource( 4 )
+
+[node name="life2" type="Sprite" parent="health"]
+modulate = Color( 1, 1, 1, 0.678431 )
+self_modulate = Color( 0.215686, 0.054902, 0.054902, 1 )
+position = Vector2( 71, 30 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="health/life2"]
+self_modulate = Color( 0.654902, 0.121569, 0.121569, 1 )
+texture = ExtResource( 4 )
+
+[node name="life3" type="Sprite" parent="health"]
+modulate = Color( 1, 1, 1, 0.678431 )
+self_modulate = Color( 0.215686, 0.054902, 0.054902, 1 )
+position = Vector2( 112, 30 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="health/life3"]
+self_modulate = Color( 0.654902, 0.121569, 0.121569, 1 )
+texture = ExtResource( 4 )
+
+[node name="s_pos1" type="Position2D" parent="."]
+position = Vector2( 775, 387 )
+
+[node name="s_pos2" type="Position2D" parent="."]
+position = Vector2( 775, 501 )
