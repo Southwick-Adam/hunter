@@ -1,9 +1,15 @@
 extends CanvasLayer
 
-var usable = false
+var omen
 
-func _display(omen):
-	omen._displayed()
-	usable = omen.usable
-	$omen_info/Label.text = omen.title
-	$omen_info/btn/icon.texture = load(omen.icon)
+func _display(om):
+	omen = om
+	if om == null:
+		$omen_info/Label.text = ""
+	else:
+		om._displayed()
+		$omen_info/Label.text = om.title
+
+func _on_btn_pressed():
+	if omen.usable:
+		omen._use()

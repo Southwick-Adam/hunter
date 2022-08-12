@@ -11,11 +11,14 @@ func _ready():
 	uses = uses_array[ItemSpawner._grade()]
 
 func _use():
-	#######
-	uses -= 1
-	slot._update()
-	if uses <= 0:
-		_delete()
+	if player.omen != null:
+		if player.omen.is_in_group("shrine") and not player.omen.open:
+			if player.omen.crystal_count < 5:
+				player.omen._crystal()
+				uses -= 1
+				slot._update()
+				if uses <= 0:
+					_delete()
 
 func _delete():
 	slot._empty()

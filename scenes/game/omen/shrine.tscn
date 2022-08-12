@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://anims/omens/shrine_anim.tres" type="Animation" id=1]
+[ext_resource path="res://assets/omen/anim_bits/shrine.png" type="Texture" id=2]
+[ext_resource path="res://assets/omen/anim_bits/shrine_head.png" type="Texture" id=3]
+[ext_resource path="res://scripts/game/omen/shrine.gd" type="Script" id=4]
+[ext_resource path="res://assets/omen/anim_bits/crystal.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CL/Sprite/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="shrine" type="Node2D" groups=["shrine"]]
+script = ExtResource( 4 )
+
+[node name="CL" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Sprite" type="Position2D" parent="CL"]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+
+[node name="head" type="Sprite" parent="CL/Sprite"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -64 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="shrine" type="Sprite" parent="CL/Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 2 )
+
+[node name="crystals" type="Position2D" parent="CL/Sprite/shrine"]
+
+[node name="Sprite" type="Sprite" parent="CL/Sprite/shrine/crystals"]
+visible = false
+self_modulate = Color( 0, 0.862745, 1, 1 )
+position = Vector2( -98, 24 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="CL/Sprite/shrine/crystals"]
+visible = false
+self_modulate = Color( 0, 0.862745, 1, 1 )
+position = Vector2( -50, 36 )
+texture = ExtResource( 5 )
+
+[node name="Sprite3" type="Sprite" parent="CL/Sprite/shrine/crystals"]
+visible = false
+self_modulate = Color( 0, 0.862745, 1, 1 )
+position = Vector2( 0, 56 )
+texture = ExtResource( 5 )
+
+[node name="Sprite4" type="Sprite" parent="CL/Sprite/shrine/crystals"]
+visible = false
+self_modulate = Color( 0, 0.862745, 1, 1 )
+position = Vector2( 50, 36 )
+texture = ExtResource( 5 )
+
+[node name="Sprite5" type="Sprite" parent="CL/Sprite/shrine/crystals"]
+visible = false
+self_modulate = Color( 0, 0.862745, 1, 1 )
+position = Vector2( 98, 24 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/shrine_anim = ExtResource( 1 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

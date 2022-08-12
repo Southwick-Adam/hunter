@@ -13,7 +13,7 @@ var items = {
 	"trap" : "res://scenes/game/item/trap.tscn",#0.4
 }
 
-var item_prob = [0.4, 0.6, 0.5, 1.0, 0.4, 0.1, 0.8, 0.5, 0.4, 0.4]
+var item_prob = [0.4, 0.6, 0.5, 0.99, 0.4, 0.1, 0.8, 0.5, 0.4, 0.4]
 
 var talismans = {
 	

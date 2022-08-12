@@ -48,12 +48,9 @@ shape = SubResource( 1 )
 shape_centered = false
 
 [node name="square" type="Sprite" parent="omen_info/btn"]
+modulate = Color( 0.603922, 0.603922, 0.603922, 1 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 4 )
-
-[node name="icon" type="Sprite" parent="omen_info/btn"]
-self_modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="health" type="Position2D" parent="."]
 
@@ -92,3 +89,5 @@ position = Vector2( 775, 387 )
 
 [node name="s_pos2" type="Position2D" parent="."]
 position = Vector2( 775, 501 )
+
+[connection signal="pressed" from="omen_info/btn" to="." method="_on_btn_pressed"]

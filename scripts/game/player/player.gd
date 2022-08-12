@@ -12,12 +12,15 @@ func _ready():
 
 func _init_items():
 #TEST
-	var key = load("res://scenes/game/item/key.tscn").instance()
-	var key2 = load("res://scenes/game/item/key.tscn").instance()
+	var key = load("res://scenes/game/item/crystal.tscn").instance()
+	var key2 = load("res://scenes/game/item/crystal.tscn").instance()
+	var key3 = load("res://scenes/game/item/crystal.tscn").instance()
 	add_child(key)
 	add_child(key2)
+	add_child(key3)
 	get_node("/root/main/game/HUD/inventory")._add(key)
 	get_node("/root/main/game/HUD/inventory")._add(key2)
+	get_node("/root/main/game/HUD/inventory")._add(key3)
 
 func _spawn(r):
 	r.visible = true
@@ -27,7 +30,8 @@ func _spawn(r):
 
 func _move_room(r):
 	room.occupants.erase(self)
-	room._close_omen()
+	if room.omen != null:
+		room._close_omen()
 	room.get_node("icon").visible = true
 	room = r
 	r.occupants.append(self)

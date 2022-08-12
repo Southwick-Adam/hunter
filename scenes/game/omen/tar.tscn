@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/omen/tar.png" type="Texture" id=1]
+[ext_resource path="res://scripts/game/omen/tar.gd" type="Script" id=2]
+
+[node name="tar" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CL" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Sprite" type="Sprite" parent="CL"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )

@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://anims/omens/furnace_anim.tres" type="Animation" id=1]
+[ext_resource path="res://assets/omen/anim_bits/plate.png" type="Texture" id=2]
+[ext_resource path="res://scripts/game/omen/furnace.gd" type="Script" id=4]
+[ext_resource path="res://assets/omen/anim_bits/furnace.png" type="Texture" id=5]
+[ext_resource path="res://assets/omen/anim_bits/flame.png" type="Texture" id=6]
+[ext_resource path="res://anims/omens/furnace_reset.tres" type="Animation" id=7]
+[ext_resource path="res://assets/tile.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CL/Sprite/Sprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -56, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CL/Sprite/Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="furnace" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CL" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Sprite" type="Position2D" parent="CL"]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="CL/Sprite"]
+visible = false
+modulate = Color( 0.447059, 0.0235294, 0.0235294, 1 )
+position = Vector2( 0, -56 )
+scale = Vector2( 2.5, 2 )
+texture = ExtResource( 8 )
+
+[node name="furnace" type="Sprite" parent="CL/Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 5 )
+
+[node name="plate" type="Sprite" parent="CL/Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, 60.5 )
+texture = ExtResource( 2 )
+
+[node name="flame" type="Sprite" parent="CL/Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -62 )
+texture = ExtResource( 6 )
+
+[node name="cover" type="Sprite" parent="CL/Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, 56 )
+scale = Vector2( 2.125, 3.2 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/furnace_anim = ExtResource( 1 )
+anims/furnace_reset = ExtResource( 7 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

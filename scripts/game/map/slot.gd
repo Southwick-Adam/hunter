@@ -3,6 +3,8 @@ extends Node2D
 var item = null
 var time = true
 
+var pos
+
 onready var inventory = get_node("/root/main/game/HUD/inventory")
 
 var real_bounds = 40
@@ -29,6 +31,7 @@ func _empty():
 func _active(b):
 	if b:
 		bounds = real_bounds
+		position = pos
 	else:
 		bounds = -1
-	visible = b
+		position = Vector2(-1000,-1000)
